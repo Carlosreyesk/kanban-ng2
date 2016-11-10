@@ -1,0 +1,89 @@
+<div id="modal1" class="modal modal-fixed-footer" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+	<!--Modal Content-->
+	<div class="modal-content container">
+		<div class="row">
+			<div class="col s2">
+				<!--Card Title-->
+				<h4 *ngIf="!editingTitle" (click)="editTitle()">{{ card?.title }}</h4>
+				<!--Card Title Editing Input-->
+				<input autofocus *ngIf="editingTitle" (blur)="updateTitle()" (keyup)="blurOnEnter($event)" [(ngModel)]="card.title" />
+			</div>
+		</div>
+		<div class="row">
+			<!--Modal Main Section-->
+			<div class="col s9">
+				<div class="modal-description">
+					<!--Card Description-->
+					<p *ngIf="!editingDescription && !noDescription" (click)="editDescription()">{{ card?.description }}</p>
+					<!--Fallback Card Description-->
+					<p *ngIf="!editingDescription && noDescription" (click)="editDescription()">Edit description</p>
+					<!--Card Description Editing Input-->
+					<textarea *ngIf="editingDescription" cols="30" rows="10" autofocus (blur)="updateDescription()" (keyup)="blurOnEnter($event)"
+						[(ngModel)]="card.description">
+      				</textarea>
+				</div>
+				<div class="modal-comments">
+					<h5>Comments</h5>
+					<!--New Comment Form-->
+					<textarea [(ngModel)]="newComment" cols="30" rows="5">
+      				</textarea>
+					<button (click)="addComment()">Add Comment</button>
+					<!--Comment List-->
+					<ul>
+						<li *ngFor="let comment of card?.comments; let i = index">
+							<!--Comment Body-->
+							<div class="modal-comment">{{ comment?.body }}</div>
+							<!--Comment Author-->
+							<div *ngIf="comment?.author.profile.name" class="modal-comment--user">{{ comment?.author.profile.name }}</div>
+							<div *ngIf="!comment?.author.profile.name" class="modal-comment--user">{{ comment?.author.email }}</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--End: Modal Main Section-->
+			<!--Modal Side Menu-->
+			<div class="col s3">
+				<div class="modal-sidebar">
+					<h5>Add</h5>
+					<!-- Dropdown Trigger -->
+					<a materialize="dropdown" class='dropdown-button btn' (click)="getMembers()" data-activates='membersDropdown'>Members</a>
+					<!-- Dropdown Structure -->
+					<div class="modal-dropdown">
+						<ul id='membersDropdown' class='dropdown-content'>
+							<li class="modal-dropdown-item" *ngFor="let member of members; let i = index" (click)="addMember(member)">{{ member.email }}</li>
+						</ul>
+					</div>
+					<div>
+						<!-- Dropdown Trigger -->
+						<a materialize="dropdown" class='dropdown-button btn col-lg-8' (click)="getLabels()" data-activates='labelDropdown'>Labels</a>
+						<!-- Dropdown Structure -->
+						<div class="modal-dropdown">
+							<ul id='labelDropdown' class='dropdown-content'>
+								<li class="modal-dropdown-item {{ 'label-'+label.color }}" *ngFor="let label of labels; let i = index" (click)="addLabel(label)">{{ label.title }}</li>
+								<li *ngIf="labels?.length == 0">No labels available for this board. Please add some in the board settings sidebar.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--End: Modal Side Menu-->
+		</div>
+	</div>
+	<!--End: Modal Content-->
+	<!--Modal Footer-->
+	<div class="modal-footer">
+		<a class="waves-effect waves-green btn-flat" (click)="closeModal()">Close</a>
+		<a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+	</div>
+</div>
+
+<!--Could be usefull-->
+
+
+<!-- data-position can be : bottom, top, left, or right -->
+<!-- data-delay controls delay before tooltip shows (in milliseconds)-->
+<!--<a materialize="tooltip" (click)="printSomething()" class="btn tooltipped" data-position="bottom" data-delay="10" data-tooltip="I am tooltip">Hover me!</a>
+      <br/><br/>-->
+<!-- toast -->
+<!--<a class="btn" onclick="Materialize.toast('I am a toast', 4000)">Toast 1!</a>
+      <a class="btn" (click)="triggerToast()" materialize [materializeParams]="['I am also a toast',4000]" [materializeActions]="globalActions">Toast 2!</a>-->

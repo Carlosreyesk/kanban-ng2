@@ -1,0 +1,27 @@
+      nav {
+          height: 0px;
+      }
+      .side-nav {
+          width: 300px;
+      }
+      li.active {
+        background-color: #ee6e73
+      }
+      .sidenav-toggle{
+        position: absolute;
+        top: 25px;
+        right: 25px;
+      }
+.sidenav-title{
+    color: black;
+}
+.sidenav-members li{
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  cursor: hand;
+}
+#dropdown1{
+  margin-left: 15px;
+}

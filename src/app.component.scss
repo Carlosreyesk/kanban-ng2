@@ -1,0 +1,21 @@
+
+a {
+    text-decoration: none;
+}
+
+a.active {
+    font-weight: bold;
+}
+
+.gu-mirror{
+  display:none;
+}
+
+.gu-transit .column{
+    width: 240px;
+    margin: 10px 5px 10px 20px;
+    -ms-transform: rotate(3deg); /* IE 9 */
+    -webkit-transform: rotate(3deg); /* Chrome, Safari, Opera */
+    transform: rotate(3deg);
+    z-index: 1000000;
+}

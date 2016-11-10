@@ -1,0 +1,33 @@
+<div>
+	<h5 class="sidenav-title">Members</h5>
+	<ul class="sidenav-members">
+		<li *ngFor="let member of board?.members; let i = index">{{ member.email }}</li>
+	</ul>
+	<!-- Dropdown Trigger -->
+	<a materialize="dropdown" class='dropdown-button btn' (click)="getUsers()" data-activates='dropdown1'>Add Members</a>
+	<!-- Dropdown Structure -->
+  <div class="sidenav-dropdown">
+    <ul id='dropdown1' class='dropdown-content'>
+      <li class="sidebav-dropdown-item" *ngFor="let user of users; let i = index" (click)="addMember(user)">{{ user.email }}</li>
+    </ul>
+  </div>
+
+	<h5 class="sidenav-title">Labels</h5>
+	<ul class="sidenav-labels">
+		<li *ngFor="let label of board?.labels; let i = index" class="{{ 'label-'+label.color }}">{{ label.title }}</li>
+		<div class="row">
+			<div class="col-lg-8">
+				<h6 *ngIf="!addingLabel" (click)="addLabel()">Add Label..</h6>
+				<input autofocus *ngIf="addingLabel" (keyup)="blurOnEnter($event)" (blur)="createLabel()" [(ngModel)]="newLabel" />
+			</div>
+			<div class="col-lg-3">
+				<a materialize="dropdown" class='dropdown-button btn {{ "btn-label-"+newLabelColor }}' data-activates='colors'>></a>				
+			</div>
+		</div>
+	</ul>
+	<div class="sidenav-dropdown">
+    <ul id='colors' class='dropdown-content'>
+      <li class="sidebav-dropdown-item" *ngFor="let color of labelColors; let i = index" (click)="selectColor(color)">{{ capitalizeFirstLetter(color) }}</li>
+    </ul>
+  </div>
+</div>

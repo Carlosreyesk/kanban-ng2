@@ -1,0 +1,17 @@
+  <nav>
+    <div class="nav-wrapper">
+      <a [routerLink]="['']" class="left" >Close board</a>
+      <a href="#" class="brand-logo center">Logo</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+      </ul>
+      <div class="right">
+           <a class="nav-toggle-sidenav" materialize="sideNav" [materializeParams]="[{ edge:'right' }]" 
+            href="#" data-activates="slide-out" class="button-collapse show-on-large">Open</a>      
+      </div>
+    </div>
+      	<ul id="slide-out" class="side-nav">
+			<li>
+				<side-menu labels="board.labels"[board]="board"></side-menu>
+			<li>
+		</ul>
+  </nav>

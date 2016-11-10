@@ -1,0 +1,13 @@
+<div class="column list-draggable col-md-3" >
+    <div class="list-draggable column-header" >
+        <h4 class="list-draggable" *ngIf="!editingColumn" (click)="editColumn()" >{{ list.title }}</h4>
+        <input autofocus *ngIf="editingColumn" (blur)="updateColumn()" (keyup)="blurOnEnter($event)" [(ngModel)]="list.title" />
+    </div>
+    <ul class="card-list list-draggable" [dragula]='"card-bag"' data-id="{{ list._id }}">
+            <card *ngFor="let card of list.cards; let i = index" data-id="{{ card._id }}" [card]="card" [cardModal]="cardModal"></card>
+    </ul>
+    <div class="add-card list-draggable">
+        <span class="list-draggable" *ngIf="!addingCard" (click)="newCard();">Add a card...</span>
+        <input autofocus *ngIf="addingCard" (keyup)="blurOnEnter($event)" (blur)="addCard()" [(ngModel)]="cardText" />
+    </div>
+</div>

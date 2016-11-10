@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <flash-messages></flash-messages>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <div class="form-login">
+            <h4>Welcome!</h4>
+            <p>Please fill the following information to sign up.</p>
+            <input type="text" #username id="userName" class="form-control input-sm chat-input" placeholder="Username" />
+            <input type="password" #password id="userPassword" class="form-control input-sm chat-input" placeholder="Password" />
+            <input type="password" #confirmPassword id="" class="form-control input-sm chat-input" placeholder="Password" />            
+            <div class="wrapper">
+                <span class="group-btn">     
+                    <button class="btn btn-primary" (click)="signup(username, password, confirmPassword);">Sign up</button>
+                </span>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
