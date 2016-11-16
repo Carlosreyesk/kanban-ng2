@@ -1,26 +1,26 @@
-<div class="container">
-    <div class="row">
-        <flash-messages></flash-messages>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-5 col-md-3">
-            <div class="form-login">
-            <h4>Welcome back.</h4>
-            <input type="text" #username id="userName" class="form-control input-sm chat-input" placeholder="Username" />
-            <input type="password" #password id="userPassword" class="form-control input-sm chat-input" placeholder="Password" />
-            <div class="wrapper">
-                <span class="group-btn">     
-                    <button class="btn btn-primary" (click)="login(username, password);">Log in</button>
-                </span>
-                <span class="group-btn">     
-                    <button class="btn btn-primary" (click)="loginWithFacebook();">Facebook Login</button>
-                </span>
-                <p class="text-center" >or</p>
-                <span class="group-btn">     
-                    <button class="btn btn-success" [routerLink]="['/signup']">Sign up</button>
-                </span>
-            </div>
-            </div>
-        </div>
-    </div>
+<div class="wrapper">
+	<div class="row">
+		<flash-messages></flash-messages>
+	</div>
+	<div class="row">
+		<div class="card col s3 offset-s6">
+			<div class="row">
+				<div class="col s12">
+					<h4>Welcome back.</h4>
+					<input type="text" #username id="userName" class="form-control input-sm chat-input" placeholder="Username" />
+					<input type="password" #password id="userPassword" class="form-control input-sm chat-input" placeholder="Password" />
+					<div class="wrapper">
+						<span class="group-btn">     
+                            <button class="btn btn-primary" (click)="login(username, password);">Log in</button>   
+                            <button class="btn btn-primary" (click)="loginWithFacebook();">Facebook Login</button>
+                        </span>
+						<p class="text-center">or</p>
+						<span class="group-btn">     
+                            <button class="btn btn-success" [routerLink]="['/signup']">Sign up</button>
+                        </span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

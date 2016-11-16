@@ -4,6 +4,7 @@ import { LoginService } from '../shared/service/login.service';
 import { Board } from '../shared/models/base';
 import { FlashMessages } from '../shared/service/FlashMessages';
 import { Title }     from '@angular/platform-browser';
+import { CredentialsConfig } from '../../config/credentials';
 
 @Component({
     selector: 'dashboard',
@@ -17,7 +18,8 @@ export class DashboardComponent{
     addingBoard: boolean = false;
 
     constructor(
-        private titleService: Title,
+        private _credentialsService: CredentialsConfig,
+        private _titleService: Title,
         private _trelloService: TrelloService,
         private _loginService: LoginService,
         private _flash: FlashMessages,
@@ -27,7 +29,7 @@ export class DashboardComponent{
 
     ngOnInit(){
         this.getBoards();
-        this.titleService.setTitle(this.titleService.getTitle()+" Dashboard");
+        this._titleService.setTitle(this._credentialsService.app_name+" | Dashboard");
     }
 
     getBoards(){

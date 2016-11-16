@@ -23,10 +23,33 @@
   transition-timing-function: ease;
 }
 
+// .badge-arrow{
+//     width: 0; 
+//     height: 0; 
+//     z-index: 1;
+// }
+// .badge-arrow--up {
+//   border-left: 12px solid transparent;
+//   border-right: 12px solid transparent;
+//   float:left;
+//   border-bottom: 12px solid grey;
+//   margin: 13px 0 0 -24px;
+// }
+
+// .badge-arrow--down{
+//   border-left: 12px solid transparent;
+//   border-right: 12px solid transparent;
+//   float: left;
+//   border-top: 12px solid grey;
+//   margin-left: -12px;
+// }
 .card:hover{
   background-color: #ddd;
 }
 
+.clearfix{
+  clear: both;
+}
 .card textarea {
     display: inherit;
     width: 100%;

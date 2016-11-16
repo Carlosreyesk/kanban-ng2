@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
-import { credentials } from '../../../config/credentials';
+import { CredentialsConfig } from '../../../config/credentials';
 import { Observable } from 'rxjs'
 
 let user = {};
@@ -12,7 +12,7 @@ export class LoginService {
     constructor(
         private _router: Router,
         private http: Http,
-        private credentials: credentials
+        private credentials: CredentialsConfig
     ) { }
 
     login(){

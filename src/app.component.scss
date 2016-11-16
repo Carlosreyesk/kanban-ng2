@@ -1,4 +1,6 @@
-
+@import './shared/styles/sass/materialize/materialize';
+@import url('https://fonts.googleapis.com/css?family=Days+One|Philosopher:400,700|Roboto:500');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 a {
     text-decoration: none;
 }
@@ -18,4 +20,177 @@ a.active {
     -webkit-transform: rotate(3deg); /* Chrome, Safari, Opera */
     transform: rotate(3deg);
     z-index: 1000000;
+}
+
+
+input:focus {
+    outline:none;
+    border:none;
+}
+
+// input:not([type]), input[type=text], input[type=password], 
+// input[type=email], input[type=url], input[type=time], 
+// input[type=date], input[type=datetime], input[type=datetime-local], 
+// input[type=tel], input[type=number], input[type=search],
+// textarea.materialize-textarea {
+//     background: #fff;
+//     width: 100%;
+//     border-radius: 3px;
+//     border-bottom: none;
+//     box-shadow: none;
+//     color:black;
+//     height:100%;
+//     margin: 0;
+//     border: none;
+//     padding: 3px 5px 4px 5px;
+//     border-radius: 3px;
+//     margin-bottom: -1px;
+//     width: calc(100% - 20px);
+//     font-size: inherit;
+//     max-width: 500px;
+// }
+
+// input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), 
+// input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), 
+// input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), 
+// input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), 
+// input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), 
+// input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), 
+// textarea.materialize-textarea:focus:not([readonly]) {
+//     background: #fff;
+//     width: 100%;
+//     border-radius: 3px;
+//     border-bottom: none;
+//     box-shadow: none;
+//     color:black;
+//     height:100%;
+//     width: 100%;
+//     margin: 0;
+//     padding: 3px 5px 4px 5px;
+//     font-size: inherit;
+//     margin-bottom: -1px;
+//     max-width: 500px;    
+// }
+input[type=text] .edit-input{
+    width: 100%;
+    border-radius: none;
+    border-bottom: none;
+    box-shadow: none;
+    color: inherit;
+    height:100%;
+    margin: 0;
+    border: none;
+    padding: 3px 5px 4px 5px;
+    border-radius: 3px;
+    margin-bottom: -1px;
+    font-size: inherit;
+    max-width: 500px;
+}
+
+input[type=text]:focus:not([readonly]) .edit-input {
+    // background: #fff;
+    width: 100%;
+    border-radius: none;
+    border-bottom: none;
+    box-shadow: none;
+    color: inherit;
+    height:100%;
+    width: 100%;
+    margin: 0;
+    padding: 3px 5px 4px 5px;
+    font-size: inherit;
+    margin-bottom: -1px;
+    max-width: 500px;    
+}
+
+
+.card-members{
+  margin-top: 5px;
+}
+.letter-icon{
+  font-size: 32px;
+  font-weight: 600;
+  background: lightgray;
+  line-height: 50px;
+  text-align: center;
+}
+
+.member-icon{
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+}
+
+.side-menu-member-icon{
+    float: left;
+    margin-bottom: 5px;
+}
+
+.autocomplete-fix{
+  width: 250px;
+}
+
+.side-nav a.btn:hover, .side-nav a.btn-large:hover, .side-nav a.btn-large:hover{
+  background-color: grey;  
+}
+
+.badge{
+  background: grey;
+  padding: 2px 6px 1px 6px;
+  display: inline-block;
+  margin: 2px;
+  border-radius: 3px;
+  color: white;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  float: left;
+  line-height: 18px;
+}
+
+.no-padding{
+    padding: 0;
+}
+
+.side-nav a.btn-floating {
+    margin: 10px 5px;
+}
+.side-nav a.btn-floating:hover {
+    background-color:grey;
+}
+// .dropdown-content li{
+//     height: 20px;
+//     min-height: 20px;
+// }
+
+.color-dropdown li{
+    height: 20px;
+    min-height: 20px;
+}
+
+.btn-label-blue, .btn-label-blue:hover{
+  background: #42a5f5;
+}
+
+.btn-label-purple, .btn-label-purple:hover{
+  background: #7e57c2;
+}
+
+.btn-label-orange, .btn-label-orange:hover{
+  background: #ffa726 ;
+}
+
+.btn-label-red, .btn-label-red:hover{
+  background: #ef5350;
+}
+
+.btn-label-green, .btn-label-green:hover{
+  background: #66bb6a;
+}
+
+.btn-label-yellow, .btn-label-yellow:hover{
+  background: #fdd835;
 }

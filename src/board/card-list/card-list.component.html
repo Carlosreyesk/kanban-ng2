@@ -1,13 +1,23 @@
-<div class="column list-draggable col-md-3" >
-    <div class="list-draggable column-header" >
-        <h4 class="list-draggable" *ngIf="!editingColumn" (click)="editColumn()" >{{ list.title }}</h4>
-        <input autofocus *ngIf="editingColumn" (blur)="updateColumn()" (keyup)="blurOnEnter($event)" [(ngModel)]="list.title" />
+<div class="column list-draggable">
+    <div class="list-draggable column-header row">
+        <div class="col s11 no-padding">
+            <h4 class="list-draggable" *ngIf="!editingColumn" (click)="editColumn()">{{ list.title }}</h4>
+            <input autofocus type="text" *ngIf="editingColumn" (blur)="updateColumn()" (keyup)="blurOnEnter($event)" [(ngModel)]="list.title" class="edit-input"/>
+        </div>
+        <div class="col s1 no-padding card-list-menu-btn">
+            <a materialize="dropdown" class='dropdown-button' data-activates='card-list-menu'><i class="material-icons card-list-menu-icon">more_vert</i></a>
+        </div>
+        <div class="card-list-dropdown">
+			<ul id='card-list-menu' class='dropdown-content card-list-menu'>
+				<li class="" (click)="deleteList(list)">Delete <i class="fa fa-trash right"></i></li>
+			</ul>
+		</div>
     </div>
     <ul class="card-list list-draggable" [dragula]='"card-bag"' data-id="{{ list._id }}">
-            <card *ngFor="let card of list.cards; let i = index" data-id="{{ card._id }}" [card]="card" [cardModal]="cardModal"></card>
+        <card *ngFor="let card of list.cards; let i = index" data-id="{{ card._id }}" [card]="card" [cardModal]="cardModal"></card>
     </ul>
-    <div class="add-card list-draggable">
-        <span class="list-draggable" *ngIf="!addingCard" (click)="newCard();">Add a card...</span>
-        <input autofocus *ngIf="addingCard" (keyup)="blurOnEnter($event)" (blur)="addCard()" [(ngModel)]="cardText" />
+    <div class="add-card list-draggable" (click)="newCard()">
+        <span class="list-draggable" *ngIf="!addingCard">Add a card...</span>
+        <input type="text" autofocus *ngIf="addingCard" (keyup)="blurOnEnter($event)" (blur)="addCard()" [(ngModel)]="cardText" class="edit-input card"/>
     </div>
 </div>

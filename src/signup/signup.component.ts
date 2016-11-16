@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../shared/service/login.service';
 import { Http } from '@angular/http';
-import { credentials } from '../../config/credentials';
+import { CredentialsConfig } from '../../config/credentials';
 import { FlashMessages } from '../shared/service/FlashMessages';
 
 @Component({
     selector: 'dl-signup',
-    styleUrls: ['signup.component.css'],
+    styleUrls: ['signup.component.scss'],
     templateUrl: 'signup.component.html',
-    providers: [Http, credentials, FlashMessages]
+    providers: [Http, CredentialsConfig, FlashMessages]
 })
 export class SignupComponent {
 
@@ -23,8 +23,8 @@ export class SignupComponent {
         }
     }
 
-    signup(username: any, password: any, confirmPassword: any) {
-        if (!username.value || !password.value || !confirmPassword.value) {
+    signup(email: any, password: any, confirmPassword: any) {
+        if (!email.value || !password.value || !confirmPassword.value) {
             this._flash.show('Please fill in all required fields', 'danger');
             return;
         }
@@ -33,7 +33,7 @@ export class SignupComponent {
             return;
         }
         const parent = this;
-        this._loginService.postSignup({ email: username.value, 
+        this._loginService.postSignup({ email: email.value, 
                                         password: password.value, 
                                         confirmPassword: confirmPassword.value })
         .subscribe(

@@ -1,17 +1,12 @@
+	<div class="board-body">
 	<!--Board navegation-->
-	<board-nav [board]="board"></board-nav>
-	<div>
+	<board-nav [board]="board"></board-nav>	
 		<!--Flash Messages-->
 		<flash-messages></flash-messages>
-		<div *ngIf="board" class="board-title">
-			<!--Board Title-->
-			<span *ngIf="!editingTitle" (click)="editTitle()">{{ board?.title }}</span>
-			<!--Board Title Editing Input-->
-			<input autofocus *ngIf="editingTitle" (keyup)="blurOnEnter($event)" (blur)="updateTitle()" [(ngModel)]="board.title" />
-		</div>
-		<div *ngIf="board" id="main"  class="list-draggable">
+		<board-toolbar [board]="board" (updateBoardEvent)="updateBoard()" ></board-toolbar>
+		<div *ngIf="board" id="main" class="list-draggable horizontal-scroll">
 			<!--Board Columns-->
-			<div *ngFor="let list of board.columns; let i = index" [dragula]='"list-bag"'>
+			<div *ngFor="let list of board.columns; let i = index" [dragula]='"list-bag"' class="horizonal-column">
 				<card-list data-id="{{ list._id }}" [cardModal]="cardmodal" [list]="list" [board]="board" (onAddCard)="addCard($event)" ></card-list>
 			</div>
 			<!--Add Column Form-->
@@ -20,6 +15,7 @@
 				<input autofocus *ngIf="addingColumn" (keyup)="blurOnEnter($event)" (blur)="addColumn()" [(ngModel)]="columnName" />
 			</div>
 		</div>
-	</div>
 	<!--Card Information Modal-->
 	<card-modal #cardmodal [boardId]="boardId" (changeEvent)="onChange()"></card-modal>
+	</div>
+	

@@ -34,7 +34,7 @@ export class CardModalComponent {
             if (res.success) {
                 parent.card = res.card;
                 console.log(parent.card);
-                if (!parent.card.description) {
+                if (!parent.card.description || parent.card.description == '\n') {
                     parent.noDescription = true;
                 }
                 parent.modalActions.emit({ action: "modal", params: ['open'] });
@@ -63,7 +63,7 @@ export class CardModalComponent {
         this.editingTitle = !this.editingTitle;
     }
 
-    updateCard(){
+    updateCard() {
         let parent = this;
         this._trelloService.updateCard(this.card).subscribe(function (res) {
             if (res.success) {
@@ -84,8 +84,15 @@ export class CardModalComponent {
     }
 
     updateDescription() {
-        this.updateCard();
+        console.log(this.card.description);
+        if (this.card.description != '' && this.card.description != '\n') {
+            this.updateCard();
+        } else {
+            this.noDescription = true;
+            this.card.description = '';
+        }
         this.editingDescription = !this.editingDescription;
+
     }
 
     addComment() {
@@ -109,7 +116,19 @@ export class CardModalComponent {
         const parent = this;
         this._trelloService.getMembers(this.boardId).subscribe(function (res) {
             if (res.success) {
-                parent.members = res.members;
+                parent.members = [];
+                res.members.forEach(function(boardMember:any){
+                    let alreadyAMember = false;
+                    parent.card.members.forEach(function(cardMember:any){
+                        if(cardMember._id == boardMember._id){
+                            alreadyAMember = true;
+                        }
+                    })
+                    if(!alreadyAMember){
+                        parent.members.push(boardMember);
+                    }
+                });
+                // parent.members = res.members;
                 console.log(parent.members);
             } else {
                 parent._flash.show(res.flash, 'danger');
@@ -124,7 +143,7 @@ export class CardModalComponent {
                 if (res.labels.length > 0) {
                     parent.labels = res.labels;
                     console.log(parent.labels);
-                }else{
+                } else {
                     parent.labels = [];
                 }
             } else {
@@ -138,7 +157,13 @@ export class CardModalComponent {
         this.card.members.push(member);
         this._trelloService.updateCard(this.card).subscribe(function (res) {
             if (res.success) {
-                parent.card = res.card;
+                parent._trelloService.getCard(parent.card._id).subscribe(function (res) {
+                    if (res.success) {
+                        parent.card = res.card;
+                    } else {
+                        parent._flash.show(res.flash, 'danger');
+                    }
+                });
             } else {
                 parent._flash.show(res.flash, 'danger');
                 parent.card.members.pop();
@@ -146,26 +171,26 @@ export class CardModalComponent {
         });
     }
 
-     addLabel(label:any) {
-            let parent = this;
-            this.card.labels.push(label);
-            this._trelloService.updateCard(this.card).subscribe(function (res) {
-                if (res.success) {
-                    parent._trelloService.getCard(parent.card._id).subscribe(function (res) {
-                        if (res.success) {
-                            if (res.card.description) {
-                                parent.noDescription = false;
-                            }
-                            parent.card = res.card;
-                        } else {
-                            parent._flash.show(res.flash, 'danger');
+    addLabel(label: any) {
+        let parent = this;
+        this.card.labels.push(label);
+        this._trelloService.updateCard(this.card).subscribe(function (res) {
+            if (res.success) {
+                parent._trelloService.getCard(parent.card._id).subscribe(function (res) {
+                    if (res.success) {
+                        if (res.card.description) {
+                            parent.noDescription = false;
                         }
-                    });
-                } else {
-                    console.log('fuck');
-                }
-            });
-     }
+                        parent.card = res.card;
+                    } else {
+                        parent._flash.show(res.flash, 'danger');
+                    }
+                });
+            } else {
+                console.log('fuck');
+            }
+        });
+    }
 
     blurOnEnter(event: any) {
         if (event.keyCode === 13) {

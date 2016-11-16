@@ -4,6 +4,8 @@ import { TrelloService } from '../shared/service/trello.service';
 import { Board, Column, Card } from '../shared/models/base';
 import { FlashMessages } from '../shared/service/FlashMessages';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
+import { Title }     from '@angular/platform-browser';
+import { CredentialsConfig } from '../../config/credentials';
 
 declare var jQuery: any;
 @Component({
@@ -15,16 +17,19 @@ export class BoardComponent {
 
     boardId: number;
     board: Board;
-    editingTitle: boolean = false;
     addingColumn: boolean = false;
     columnName: string;
 
     constructor(
+        private _credentialsService: CredentialsConfig,
+        private _titleService: Title,
         private _trelloService: TrelloService,
         private _route: ActivatedRoute,
         private _flash: FlashMessages,
         private dragulaService: DragulaService
     ) {
+        this._titleService.setTitle(this._credentialsService.app_name);
+
         dragulaService.drop.subscribe((value: any) => {
             this.handleDrop(value);
         });
@@ -81,11 +86,6 @@ export class BoardComponent {
         });
     }
 
-    updateTitle() {
-        this.editingTitle = !this.editingTitle;
-        this.updateBoard();
-    }
-
     updateBoard() {
         let parent = this;
         if (this.board.title != '') {
@@ -104,10 +104,6 @@ export class BoardComponent {
         setTimeout(function () {
             parent.getBoard();
         }, 100);
-    }
-
-    editTitle() {
-        this.editingTitle = !this.editingTitle;
     }
 
     newColumn() {

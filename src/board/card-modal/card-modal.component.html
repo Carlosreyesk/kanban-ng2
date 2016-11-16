@@ -34,8 +34,8 @@
 							<!--Comment Body-->
 							<div class="modal-comment">{{ comment?.body }}</div>
 							<!--Comment Author-->
-							<div *ngIf="comment?.author.profile.name" class="modal-comment--user">{{ comment?.author.profile.name }}</div>
-							<div *ngIf="!comment?.author.profile.name" class="modal-comment--user">{{ comment?.author.email }}</div>
+							<div *ngIf="comment?.author.profile?.name" class="modal-comment--user">{{ comment?.author.profile.name }}</div>
+							<div *ngIf="!comment?.author.profile?.name" class="modal-comment--user">{{ comment?.author.email }}</div>
 						</li>
 					</ul>
 				</div>
@@ -51,6 +51,7 @@
 					<div class="modal-dropdown">
 						<ul id='membersDropdown' class='dropdown-content'>
 							<li class="modal-dropdown-item" *ngFor="let member of members; let i = index" (click)="addMember(member)">{{ member.email }}</li>
+							<li *ngIf="members?.length == 0">No more members available.</li>
 						</ul>
 					</div>
 					<div>

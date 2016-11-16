@@ -14,9 +14,11 @@ export class CardComponent {
 
     constructor(
       private _cardService: CardService
-    ) { }
+    ) { 
+    }
 
     openModal(){
+      console.log(this.card.members);
       this.cardModal.openModal(this.card._id);
     }
 

@@ -1,17 +1,17 @@
-  <nav>
+  <nav class="grey lighten-5">
     <div class="nav-wrapper">
-      <a [routerLink]="['']" class="left" >Close board</a>
-      <a href="#" class="brand-logo center">Logo</a>
+      <a [routerLink]="['']" class="left nav-item" >Boards</a>
+      <a [routerLink]="['']"  class="brand-logo center nav-item">{{ logo }}</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
       </ul>
-      <div class="right">
-           <a class="nav-toggle-sidenav" materialize="sideNav" [materializeParams]="[{ edge:'right' }]" 
-            href="#" data-activates="slide-out" class="button-collapse show-on-large">Open</a>      
-      </div>
+      <a materialize="sideNav" [materializeParams]="[{ edge:'right' }]" 
+            href="#" data-activates="slide-out" class="right nav-item side-nav-toggle grey lighten-3">
+           <div class="button-collapse show-on-large"><i class="material-icons">reorder</i></div>      
+      </a>
     </div>
-      	<ul id="slide-out" class="side-nav">
+      	<ul id="slide-out" class="side-nav grey lighten-5">
 			<li>
-				<side-menu labels="board.labels"[board]="board"></side-menu>
+				<side-menu labels="board.labels" [board]="board"></side-menu>
 			<li>
 		</ul>
   </nav>

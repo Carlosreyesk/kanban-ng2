@@ -4,7 +4,7 @@
     <div class="boards-wrapper">
         <a (click)="logout()">Logout</a>
         <div id="boards">
-            <div class="container-fluid">
+            <div class="row">
                 <h2>My Boards</h2>
             <div class="board" *ngFor="let board of boards" [routerLink]="['board', board._id]">
                 <span class="title">{{ board.title }}</span>
@@ -20,7 +20,7 @@
                     [(ngModel)]="boardName" />
             </div>
             </div>
-            <div class="container-fluid" *ngIf="colabs">
+            <div class="row" *ngIf="colabs">
                  <h2>Collaboration Boards</h2>
                 <div class="board" *ngFor="let board of colabs" [routerLink]="['board', board._id]">
                     <span class="title">{{ board.title }}</span>

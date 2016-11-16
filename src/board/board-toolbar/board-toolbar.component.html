@@ -1,0 +1,8 @@
+<div class="board-toolbar">
+	<div *ngIf="board" class="board-title">
+		<!--Board Title-->
+		<span class="board-title--text" *ngIf="!editingTitle" (click)="editTitle()">{{ board?.title }}</span>
+		<!--Board Title Editing Input-->
+		<input class="edit-input" autofocus *ngIf="editingTitle" (keyup)="blurOnEnter($event)" (blur)="updateTitle()" [(ngModel)]="board.title" />
+	</div>
+</div>

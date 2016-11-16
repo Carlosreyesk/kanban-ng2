@@ -1,3 +1,12 @@
 <li class="card card-draggable" (click)="openModal()">
+    <div *ngFor="let label of card.labels; let i = index">
+        <p class="badge {{ 'btn-label-'+label.color }}">{{ label.title }}</p>
+    </div>
+    <div class="clearfix"></div>
     <span class="card-draggable">{{ card.title }}</span>
+    <div  class="card-members">
+        <div *ngFor="let member of card.members; let i = index" class="member-icon">
+            <member-icon [member]="member"></member-icon>
+        </div>
+    </div>
 </li>

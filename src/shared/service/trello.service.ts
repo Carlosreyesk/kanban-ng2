@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Column, Board, TextCard, TextElement, Tag, Card } from '../models/base';
 import { Http } from '@angular/http';
-import { credentials } from '../../../config/credentials';
+import { CredentialsConfig } from '../../../config/credentials';
 import { Observable } from 'rxjs';
 
 let boards: Array<Board>;
@@ -10,7 +10,7 @@ let boards: Array<Board>;
 export class TrelloService {
 
     constructor(private _http: Http,
-                private _credentials: credentials,
+                private _credentials: CredentialsConfig,
     ) {}
 
     getBoards(): Observable<any> {
@@ -74,8 +74,17 @@ export class TrelloService {
     }
 
     addLabel(label:any, boardId:number){
-        console.log(label);
         return this._http.post(this._credentials.api + 'label', { label:label, boardId:boardId }, { withCredentials: true })
+        .map(res => res.json());
+    }
+
+    deleteLabel(label:any){
+        return this._http.delete(this._credentials.api + 'label/'+ label._id, { withCredentials: true })
+        .map(res => res.json());
+    }
+
+    deleteMember(member:any, boardId:any){
+        return this._http.delete(this._credentials.api + 'member/'+ member._id+'/board/'+boardId, { withCredentials: true })
         .map(res => res.json());
     }
 

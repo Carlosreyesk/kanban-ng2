@@ -1,13 +1,10 @@
-#main {
-  min-width: 100%;
-  /*height: calc(100% - 90px);*/
-  overflow: hidden;
+.horizontal-scroll{
+  overflow: auto;
+  white-space: nowrap;
+  height: calc(100vh - 118px);
 }
-
-.board-title {
-  margin-left: 18px;
-  margin-top: 10px;
-  margin-bottom: 15px;
+.horizonal-column{
+  display: inline-block;
 }
 
 .board-title span {
@@ -27,7 +24,6 @@
 .add-column {
   width: 280px;
   height: 40px;
-  background-color: #0067A3;
   border-radius: 3px; 
   width: 270px;
   margin-left: 10px;
@@ -41,7 +37,7 @@
 }
 
 .add-column span {
-	color: rgba(255,255,255,.7);
+	color: grey;
 	line-height: 40px;
 	vertical-align: middle;
 	padding: 7px;
@@ -72,4 +68,8 @@ md-sidenav{
 }
 md-toolbar-row{
   justify-content: space-between;
+}
+.board-body{
+    background: #eeeeee;
+    height:100%;
 }

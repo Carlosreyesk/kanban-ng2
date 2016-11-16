@@ -1,0 +1,8 @@
+<div *ngIf="member?.profile?.picture">
+	<img materialize="tooltip" class="member-icon  tooltipped" data-position="top" data-delay="10" [attr.data-tooltip]="member.email" src="{{ member.profile.picture }}" alt="{{ member.email}}" />
+	<span *ngIf="removable" class="member-delete fa fa-times" (click)="deleteMember()"></span>
+</div>
+<div *ngIf="!member?.profile?.picture">
+	<div materialize="tooltip" class="member-icon letter-icon tooltipped" data-position="top" data-delay="10" [attr.data-tooltip]="member.email" >{{ member.email[0]?.toUpperCase() }}</div>
+	<span *ngIf="removable" class="member-delete fa fa-times" (click)="deleteMember()"></span>
+</div>

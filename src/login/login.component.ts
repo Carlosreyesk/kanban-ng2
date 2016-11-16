@@ -2,23 +2,25 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../shared/service/login.service';
 import { Http } from '@angular/http';
-import { credentials } from '../../config/credentials';
 import { FlashMessages } from '../shared/service/FlashMessages';
+import { CredentialsConfig } from '../../config/credentials';
+import { Title }     from '@angular/platform-browser';
 
 @Component({
     selector: 'dl-login',
     styleUrls: ['login.component.scss'],
     templateUrl: 'login.component.html',
-    providers: [Http, credentials, FlashMessages]
+    providers: [Http, CredentialsConfig, FlashMessages]
 })
 export class LoginComponent {
 
     constructor(
+        private _titleService: Title,
         private _router: Router,
         private _route: ActivatedRoute,
         private _loginService: LoginService,
         private _flash: FlashMessages,
-        private _credentials: credentials
+        private _credentials: CredentialsConfig
     ) {
         if(JSON.parse(localStorage.getItem('loggedin'))){
             this._router.navigate(['']);

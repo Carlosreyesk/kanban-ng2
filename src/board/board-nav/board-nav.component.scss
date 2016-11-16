@@ -2,9 +2,48 @@
 .nav-toggle-sidenav{
     float: right;
 }
+.nav-toggle-sidenav:hover{
+    text-decoration: none;
+}
 
-.nav{
-    height:50px;
+.side-nav-toggle{
+    border-left: 1px solid darkgray;
+}
+
+nav{
+    min-height:50px;
+    height:7vh;
     line-height: 50px;
+}
+nav a{
+    color: #616161;
+}
+.nav-title{
+    margin: auto 0;
+    padding: 0 10px;
+    border-radius: 3px;
+    border: 1px solid darkslateblue;
+    background: dodgerblue;
+    color: cornflowerblue;
+}
+.nav-title:hover{
+    text-decoration: none;
+}
 
+nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
+    height:100%;
+    margin-top: -6px;
+}
+.nav-item{
+    height: 100%;
+}
+nav a.button-collapse{
+    height:100%;
+}
+a:hover{
+    text-decoration: none;
+}
+nav .brand-logo{
+    color: darkgrey;
+    font-family: 'Philosopher', sans-serif;
 }

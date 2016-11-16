@@ -1,6 +1,26 @@
+@import './../shared/styles/sass/materialize/components/color';
+@import './../shared/styles/sass/materialize/components/variables';
+@import './../shared/styles/sass/materialize/components/forms/input-fields';
+
 .container {
     padding: 25px;
     position: fixed;
+}
+
+.card{
+    border-radius: 0px;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100vh;
+}
+
+.brand-logo{
+    width: 100px;
+    margin-top: 0;
+    left: 50px;
+    padding: 40px 15px 15px 15px;
 }
 
 .form-login {

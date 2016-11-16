@@ -13,7 +13,8 @@
         right: 25px;
       }
 .sidenav-title{
-    color: black;
+    color: dimgrey;
+    font-size: 16px;
 }
 .sidenav-members li{
   font-size: 16px;
@@ -22,6 +23,90 @@
   cursor: pointer;
   cursor: hand;
 }
+.sidenav-members{
+   padding: 0;
+}
 #dropdown1{
   margin-left: 15px;
+}
+.side-menu-input{
+  color: black;
+      margin: 0 0 20px 0;
+}
+
+.side-menu-label{
+  color: black;
+}
+.label-delete{
+  cursor: pointer;
+  padding: 1.5px 3px; 
+  border-radius: 50%;
+  margin-right: -2px;
+}
+
+.label-delete:hover{
+  background-color:rgba(0, 0, 0, 0.5);
+}
+
+.delete-icon{
+  line-height: 18px;
+}
+
+.label-btn{
+    height: 35px;
+    width: 35px;
+    padding: 0 13px;
+    border: 3px solid lightgrey;
+}
+
+.label-btn:hover{
+    background-color:grey;
+}
+
+
+.picker-icon{
+    line-height: 18px;
+    font-size: 16px;
+    margin-left: -16px;
+    position: absolute;
+    margin-top: 6px;
+}
+
+.add-label-button{
+  padding: 0;
+      height: 35px;
+    width: 35px;
+    text-align: center;
+}
+.add-label-icon{
+  font-size: 22px;
+    font-size: 16px;
+    top: -2px;
+    left: 0.5px;
+    position: absolute;
+}
+
+
+.btn-label-blue, .btn-label-blue:hover{
+  background: #42a5f5;
+}
+
+.btn-label-purple, .btn-label-purple:hover{
+  background: #7e57c2;
+}
+
+.btn-label-orange, .btn-label-orange:hover{
+  background: #ffa726 ;
+}
+
+.btn-label-red, .btn-label-red:hover{
+  background: #ef5350;
+}
+
+.btn-label-green, .btn-label-green:hover{
+  background: #66bb6a;
+}
+
+.btn-label-yellow, .btn-label-yellow:hover{
+  background: #fdd835;
 }
